@@ -5,10 +5,10 @@ This was developped on a 16F18325 PIC Microchip microcontroller.
 
 ## Disclaimer
 
-This is not a fully tested and vetted project.
-I am not responsible if for some reason your PlayStation gets damaged by using this.
+This is not a fully tested and vetted project.  
+I am not responsible if for some reason your PlayStation gets damaged by using this.  
 
-You use this at your own risk.
+You use this at your own risk.  
 
 ## Why
 
