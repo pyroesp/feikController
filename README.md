@@ -2,7 +2,7 @@
 
 feikController is a PIC16F18325 emulating a PlayStation 1 controller.  
 I wanted to make this into a library but it's too device specific.  
-I'm using a cheap pedal button as input to the 16F18325, which send data to the PlayStation 1 to emulate a press on the X button.  
+I'm using a cheap pedal button as input to the 16F18325, which sends data to the PlayStation 1 to emulate a press on the X button.  
 
 
 ## Disclaimer
@@ -21,6 +21,18 @@ That's how this idea came to be, and it seems to be working quite well.
 Here's a demo of the pedal controller : ![https://youtu.be/5PXXQ49MqOc](https://youtu.be/5PXXQ49MqOc)  
 
 You can find a playlist of me struggling to make this pedal controller here: ![playlist](https://www.youtube.com/watch?v=J5fQKmc8AMY&list=PLGaX4WJGgdHhcbQUQQJR6zFgzyka-xVOa)  
+  
+  
+I'd like to point out that the code as it is now is way overkill for just a pedal that only works for Time Crisis.  
+It's more a proof of concept on making a PlayStation 1 controller.  
+
+If you're not afraid of modding your GUNCON then I suggest you go that route. It's going to be cheaper too.  
+I'd recommend adding something like a 3.5mm jack where you can plug in your pedal.  
+
+Connect the jack in parallel to either the A or B button.  
+
+Be sure to double check the pedal you're buying is the correct type.  
+You want a pedal with a normal open button, not normal closed, nor a potentiometer.  
 
 ## License
 
