@@ -54,6 +54,13 @@ DAT  -----XXXXXXXXXXXXX   ID   XXXX  5Ah   XXXX  key1  XXXX  key2  XXXX-----
 #define BUTTON_SQUARE 15
 
 
+/* Acknowledge Configuration (RC5) */
+#define ACK_LAT LATC
+#define ACK_TRIS TRISC
+#define ACK_ANSEL ANSELC
+#define ACK_OUTPUT 5
+
+
 /* PlayStation Data Buffer */
 #define PS1_CTRL_BUFF_SIZE 5
 
