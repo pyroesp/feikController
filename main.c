@@ -38,6 +38,7 @@ volatile union PS1_Cmd cmd;
 volatile union PS1_Ctrl_Data data;
 volatile uint8_t cnt;
 volatile uint8_t send_ack;
+volatile uint8_t memcard_spi;
 
 /** Reverse byte order **/
 void _reverseByte(volatile uint8_t *b);
@@ -68,15 +69,19 @@ void __interrupt() _spi_int(void) {
          * If the device select is the memory card byte (81h),
          * all received bytes will be ignored
          */
-        SSP1BUF = 0x00; // clear output
+        SSP1BUF = 0xFF; // clear output
         if (cmd.device_select == CONTROLLER_SEL){
             if (cnt < PS1_CTRL_BUFF_SIZE){
                 temp_spi = data.buff[cnt];
                 _reverseByte(&temp_spi);
-                SSP1BUF = ~temp_spi;
+                SSP1BUF = temp_spi;
                 cnt++;
                 send_ack = 1;
             }
+        }else{ // If PlayStation is trying to read the memory card
+            SSP1CON1bits.SSPEN = 0; // disable SPI1
+            TRISCbits.TRISC1 = 1; // SDO1 set to input
+            memcard_spi = 1;
         }
         PIR1bits.SSP1IF = 0; // clear SPI1 flag
     }
@@ -134,7 +139,7 @@ void main(){
     SSP1CON3bits.BOEN = 1; // ignore BF flag
     SSP1CON1bits.SSPEN = 1; // enable SPI1
 
-    SSP1BUF = 0x00;
+    SSP1BUF = 0xFF;
     
     /* Enable interrupts */
     PIR1bits.SSP1IF = 0; // clear SPI1 flag
@@ -174,13 +179,16 @@ void main(){
         
         // Reset counter whenever SS is high
         if (PORTAbits.RA2 == 1){
+            memcard_spi = 0; // when SS high, communication done so reset the variable
             if (SSP1CON1bits.SSPEN){ // if SS high and SPI enabled
                 SSP1CON1bits.SSPEN = 0; // disable SPI1
                 cnt = 0; // reset counter
             }
         }else{
-            if (!SSP1CON1bits.SSPEN){ // if SS low and SPI disabled
-                SSP1BUF = 0x00; // clear SPI buffer content
+            // if SS low and SPI disabled and PlayStation isn't reading the memory card anymore
+            if (!SSP1CON1bits.SSPEN && !memcard_spi){ 
+                SSP1BUF = 0xFF; // clear SPI buffer content
+                TRISCbits.TRISC1 = 0; // SDO1 set to output
                 SSP1CON1bits.SSPEN = 1; // enable SPI1
             }
         }
