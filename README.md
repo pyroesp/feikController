@@ -31,7 +31,7 @@ I'd recommend adding something like a 3.5mm jack where you can plug in your peda
 
 Connect the jack in parallel to either the A or B button.  
 
-Be sure to double check the pedal you're buying is the correct type.  
+When you buy your pedal switch, be sure to double check the pedal you're getting is of the correct type.  
 You want a pedal with a normal open button, not normal closed, nor a potentiometer.  
 
 ## License
