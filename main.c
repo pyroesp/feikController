@@ -37,6 +37,7 @@
 volatile union PS1_Cmd cmd;
 volatile union PS1_Ctrl_Data data;
 volatile uint8_t cnt;
+volatile uint8_t send_ack;
 
 /** Reverse byte order **/
 void _reverseByte(volatile uint8_t *b);
@@ -74,34 +75,7 @@ void __interrupt() _spi_int(void) {
                 _reverseByte(&temp_spi);
                 SSP1BUF = ~temp_spi;
                 cnt++;
-
-                // Set the ACK pin to an output, LAT already to 0
-                CLR_BIT(ACK_TRIS, ACK_OUTPUT);
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns - 500ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns - 1us
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns - 1.5us
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns - 2us
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns - 2.5us
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns
-                NOP(); // 125ns - 3us
-                SET_BIT(ACK_TRIS, ACK_OUTPUT); // Set ACK pin back to input
+                send_ack = 1;
             }
         }
         PIR1bits.SSP1IF = 0; // clear SPI1 flag
@@ -110,7 +84,7 @@ void __interrupt() _spi_int(void) {
 
 
 void main(){    
-    // Setup playstation structure
+    // Setup PlayStation structure
     cmd.device_select = 0x00;
     cmd.command = 0x00;
     data.unused1 = 0xFF;
@@ -120,6 +94,7 @@ void main(){
     data.keys_hi = CONTROLLER_BUTTON_RESET;
     data.keys_lo = CONTROLLER_BUTTON_RESET;
     cnt = 0;
+    send_ack = 0;
     
     /* Configure IO for the pedal */
     CLR_BIT(PEDAL_ANSEL, PEDAL_INPUT); // Set to digital IO
@@ -155,7 +130,7 @@ void main(){
     SSP1STATbits.SMP = 0; // slave mode SPI1
     SSP1STATbits.CKE = 0;
     SSP1CON1bits.CKP = 1; // clock idle high
-    SSP1CON1bits.SSPM = 0x04; // slave mode: clk = sck pin; SS enabled
+    SSP1CON1bits.SSPM = 0x04; // slave mode: CLK = SCK pin; SS enabled
     SSP1CON3bits.BOEN = 1; // ignore BF flag
     SSP1CON1bits.SSPEN = 1; // enable SPI1
 
@@ -169,6 +144,34 @@ void main(){
     INTCONbits.GIE = 1; // global interrupt enable
     
     while(1){
+        // Send Ack to PlayStation
+        if (send_ack){
+            // Set the ACK pin to an output, LAT already to 0
+            CLR_BIT(ACK_TRIS, ACK_OUTPUT);
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns - 500ns
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns - 1us
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns - 1.5us
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns - 2us
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns
+            NOP(); // 125ns - 2.5us
+            SET_BIT(ACK_TRIS, ACK_OUTPUT); // Set ACK pin back to input
+            send_ack = 0;
+        }
+        
         // Reset counter whenever SS is high
         if (PORTAbits.RA2 == 1){
             if (SSP1CON1bits.SSPEN){ // if SS high and SPI enabled

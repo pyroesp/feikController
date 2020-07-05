@@ -6,7 +6,7 @@
  * Playstation send cmd :       01h     42h     00h     00h     00h
  * Controller responds with :   FFh     ID      5Ah     key1    key2
  * Serial data transfered LSB first
- * Acknowledge bit needs to be more than 2µsec
+ * Acknowledge bit needs to be more than 2usec
  * Clock is 250kHz 
      ____                                                              _____
 /SEL     |____________________________________________________________|
