@@ -18,9 +18,9 @@ A while back I found out you could use a second controller in Time Crisis 1 to w
 I recently made the PlayStation 1 reset mod with the 16F18325 so I was confident I could emulate a controller.  
 
 That's how this idea came to be, and it seems to be working quite well.  
-Here's a demo of the pedal controller : ![https://youtu.be/5PXXQ49MqOc](https://youtu.be/5PXXQ49MqOc)  
+Here's a demo of the pedal controller : [https://youtu.be/5PXXQ49MqOc](https://youtu.be/5PXXQ49MqOc)  
 
-You can find a playlist of me struggling to make this pedal controller here: ![playlist](https://www.youtube.com/watch?v=J5fQKmc8AMY&list=PLGaX4WJGgdHhcbQUQQJR6zFgzyka-xVOa)  
+You can find [a playlist](https://www.youtube.com/watch?v=J5fQKmc8AMY&list=PLGaX4WJGgdHhcbQUQQJR6zFgzyka-xVOa) of me struggling to make this pedal controller.  
   
   
 I'd like to point out that the code as it is now is way overkill for just a pedal that only works for Time Crisis.  
