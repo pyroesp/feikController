@@ -147,8 +147,9 @@ void main(){
 
     INTCONbits.PEIE = 1; // peripheral interrupt enable
     INTCONbits.GIE = 1; // global interrupt enable
-    
+        
     while(1){
+
         // Send Ack to PlayStation
         if (send_ack){
             // Set the ACK pin to an output, LAT already to 0
@@ -182,11 +183,11 @@ void main(){
             memcard_spi = 0; // when SS high, communication done so reset the variable
             if (SSP1CON1bits.SSPEN){ // if SS high and SPI enabled
                 SSP1CON1bits.SSPEN = 0; // disable SPI1
-                cnt = 0; // reset counter
             }
         }else{
             // if SS low and SPI disabled and PlayStation isn't reading the memory card anymore
             if (!SSP1CON1bits.SSPEN && !memcard_spi){ 
+                cnt = 0; // reset counter
                 SSP1BUF = 0xFF; // clear SPI buffer content
                 TRISCbits.TRISC1 = 0; // SDO1 set to output
                 SSP1CON1bits.SSPEN = 1; // enable SPI1
