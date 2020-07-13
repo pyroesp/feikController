@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name feikController)(type Legacy)(uri "C:/Users/pyroesp/Documents/Schematics/feikController pedal/feikController pedal.lib")(options "")(descr ""))
+  (lib (name feikController-pedal-rescue)(type Legacy)(uri "${KIPRJMOD}/feikController pedal-rescue.lib")(options "")(descr ""))
+)
