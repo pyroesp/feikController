@@ -1,0 +1,35 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,(5.1.8)-1*%
+%TF.CreationDate,2020-12-26T04:00:47+01:00*%
+%TF.ProjectId,feikController pedal,6665696b-436f-46e7-9472-6f6c6c657220,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Soldermask,Bot*%
+%TF.FilePolarity,Negative*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW (5.1.8)-1) date 2020-12-26 04:00:47*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10C,1.000000*%
+%ADD11R,1.000000X1.000000*%
+G04 APERTURE END LIST*
+D10*
+%TO.C,ICSPCLK*%
+X181508400Y-113258600D03*
+%TD*%
+%TO.C,ICSPDAT*%
+X179400200Y-113258600D03*
+%TD*%
+%TO.C,VSS*%
+X177292000Y-113258600D03*
+%TD*%
+D11*
+%TO.C,VDD*%
+X175183800Y-113258600D03*
+%TD*%
+D10*
+%TO.C,VPP/~MCLR*%
+X173075600Y-113258600D03*
+%TD*%
+M02*

@@ -231,7 +231,7 @@ F 3 "~" H 3750 3300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:CP1_Small C1
+L Device:C_Polarized_Small_US C1
 U 1 1 5DA2B48A
 P 5200 2150
 F 0 "C1" H 5350 2200 50  0000 L CNN
@@ -268,7 +268,7 @@ Wire Wire Line
 Wire Wire Line
 	5200 2050 5200 2000
 $Comp
-L Device:CP1_Small C2
+L Device:C_Polarized_Small_US C2
 U 1 1 5DA61B3C
 P 5650 2150
 F 0 "C2" H 5800 2200 50  0000 L CNN
@@ -359,7 +359,7 @@ VSS
 Text Label 7750 3150 1    50   ~ 0
 VDD
 $Comp
-L Device:CP1_Small C3
+L Device:C_Polarized_Small_US C3
 U 1 1 5DABA497
 P 6050 2150
 F 0 "C3" H 6200 2200 50  0000 L CNN
