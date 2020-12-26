@@ -18,13 +18,14 @@ A while back I found out you could use a second controller in Time Crisis 1 to w
 I recently made the PlayStation 1 reset mod with the 16F18325 so I was confident I could emulate a controller.  
 
 That's how this idea came to be, and it seems to be working quite well.  
-Here's a demo of the pedal controller : [https://youtu.be/5PXXQ49MqOc](https://youtu.be/5PXXQ49MqOc)  
+Here's a demo of the pedal controller :  
+[![Demo PlayStation pedal controller](https://img.youtube.com/vi/5PXXQ49MqOc/0.jpg)](https://www.youtube.com/watch?v=5PXXQ49MqOc)
 
 You can find [a playlist](https://www.youtube.com/watch?v=J5fQKmc8AMY&list=PLGaX4WJGgdHhcbQUQQJR6zFgzyka-xVOa) of me struggling to make this pedal controller.  
   
   
-I'd like to point out that the code as it is now is way overkill for just a pedal that only works for Time Crisis.  
-It's more a proof of concept on making a PlayStation 1 controller.  
+I'd like to point out that the code as it is now is overkill for just a pedal that only works for Time Crisis.  
+**It's more a proof of concept on making a PlayStation 1 controller.**  
 
 If you're not afraid of modding your GUNCON then I suggest you go that route. It's going to be cheaper too.  
 I'd recommend adding something like a 3.5mm jack where you can plug in your pedal.  
@@ -33,6 +34,14 @@ Connect the jack in parallel to either the A or B button.
 
 When you buy your pedal switch, be sure to double check the pedal you're getting is of the correct type.  
 You want a pedal with a normal open button, not normal closed, nor a potentiometer.  
+
+## Schematic and PCB
+
+The schematic and PCB is pretty much the same as the reset mod I did for the PlayStation 1, just a few changes and more pads for the button.  
+
+![PlayStation pedal pcb front](./pics/pcb-front.PNG)  
+![PlayStation pedal pcb back](./pics/pcb-back.PNG)  
+![PlayStation pedal schematic](./pics/schematic.PNG)  
 
 ## License
 
