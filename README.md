@@ -1,8 +1,7 @@
 # feikController
 
 feikController is a PIC16F18325 emulating a PlayStation 1 controller.  
-I wanted to make this into a library but it's too device specific.  
-I'm using a cheap pedal button as input to the 16F18325, which sends data to the PlayStation 1 to emulate a press on the X button.  
+I wanted to make this into a library but it's too device specific.    
 
 
 ## Disclaimer
@@ -14,34 +13,35 @@ You use this at your own risk.
 
 ## Why
 
-A while back I found out you could use a second controller in Time Crisis 1 to work as an arcade pedal.  
+The original idea for feikController came from the fact you can use a second controller to play Time Crisis.  
+You can use that second controller to hide/reload by pressing on the buttons with your foot, so it's just like the pedal button on the arcade games.  
+
 I recently made the PlayStation 1 reset mod with the 16F18325 so I was confident I could emulate a controller.  
 
-That's how this idea came to be, and it seems to be working quite well.  
+## Pedal project
+
+The pedal project uses a pedal button to send an X button press to the PlayStation.  
 Here's a demo of the pedal controller :  
 [![Demo PlayStation pedal controller](https://img.youtube.com/vi/5PXXQ49MqOc/0.jpg)](https://www.youtube.com/watch?v=5PXXQ49MqOc)
 
 You can find [a playlist](https://www.youtube.com/watch?v=J5fQKmc8AMY&list=PLGaX4WJGgdHhcbQUQQJR6zFgzyka-xVOa) of me struggling to make this pedal controller.  
   
-  
+Take a look at the source if you want to learn more about it. I've tried to add comments to the code.  
+
 I'd like to point out that the code as it is now is overkill for just a pedal that only works for Time Crisis.  
 **It's more a proof of concept on making a PlayStation 1 controller.**  
 
-If you're not afraid of modding your GUNCON then I suggest you go that route. It's going to be cheaper too.  
-I'd recommend adding something like a 3.5mm jack where you can plug in your pedal.  
+I also made it so you can use either normal open or normal close button with the pedal. You just need to change the button defines a bit, see the source files.
 
-Connect the jack in parallel to either the A or B button.  
-
-When you buy your pedal switch, be sure to double check the pedal you're getting is of the correct type.  
-You want a pedal with a normal open button, not normal closed, nor a potentiometer.  
+**Note:** You could very well use this 
 
 ## Schematic and PCB
 
 The schematic and PCB is pretty much the same as the reset mod I did for the PlayStation 1, just a few changes and more pads for the button.  
 
-![PlayStation pedal pcb front](./pics/pcb-front.PNG)  
-![PlayStation pedal pcb back](./pics/pcb-back.PNG)  
-![PlayStation pedal schematic](./pics/schematic.PNG)  
+![PlayStation pedal pcb front](./pedal/pics/pcb-front.PNG)  
+![PlayStation pedal pcb back](./pedal/pics/pcb-back.PNG)  
+![PlayStation pedal schematic](./pedal/pics/schematic.PNG)  
 
 ## License
 
